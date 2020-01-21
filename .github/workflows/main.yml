@@ -1,0 +1,21 @@
+name: terraform-provider-vmc
+on: [push]
+jobs:
+  build:
+    runs-on: self-hosted
+    container: vmcswaggers-docker-local.artifactory.eng.vmware.com/terraform-provider-vmc:1.1
+    steps:
+      - uses: actions/checkout@v2
+      - name: Running acceptance test
+        env: 
+           ORG_ID: ${{ secrets.ord_id }}
+           REFRESH_TOKEN: ${{ secrets.refresh_token }}
+           TEST_SDDC_ID: ${{ secrets.test_sddc_id }}
+        run: |
+          pwd
+          cp -r * $GOPATH/src/github.com/vmware/terraform-provider-vmc
+          cd $GOPATH/src/github.com/vmware/terraform-provider-vmc
+          go get
+          go build -o terraform-provider-vmc          
+          terraform init
+          make testacc 
