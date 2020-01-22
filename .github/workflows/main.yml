@@ -3,18 +3,16 @@ on: [push]
 jobs:
   build:
     runs-on: self-hosted
-    container: vmcswaggers-docker-local.artifactory.eng.vmware.com/terraform-provider-vmc:1.2
     steps:
       - uses: actions/checkout@v2
       - name: Running acceptance test
         env: 
+           GOPATH: /root/go
            ORG_ID: ${{ secrets.ord_id }}
            REFRESH_TOKEN: ${{ secrets.refresh_token }}
            TEST_SDDC_ID: ${{ secrets.test_sddc_id }}
         run: |
-          #git config --global url."git@github.com:".insteadOf "https://github.com/"
-          git config --global user.email "amanp@vmware.com"
-          git config --global user.name "amanp"
+          git config --global url."git@github.com:".insteadOf "https://github.com/"
           cp -r * $GOPATH/src/github.com/vmware/terraform-provider-vmc
           cd $GOPATH/src/github.com/vmware/terraform-provider-vmc
           go get
