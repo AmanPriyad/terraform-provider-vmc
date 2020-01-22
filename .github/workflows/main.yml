@@ -13,6 +13,8 @@ jobs:
            TEST_SDDC_ID: ${{ secrets.test_sddc_id }}
         run: |
           #git config --global url."git@github.com:".insteadOf "https://github.com/"
+          git config --global user.email "amanp@vmware.com"
+          git config --global user.name "amanp"
           cp -r * $GOPATH/src/github.com/vmware/terraform-provider-vmc
           cd $GOPATH/src/github.com/vmware/terraform-provider-vmc
           go get
