@@ -7,7 +7,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Running acceptance test
         env: 
-           GOPATH: /root/go
+           GOPATH: /home/go
            ORG_ID: ${{ secrets.ord_id }}
            REFRESH_TOKEN: ${{ secrets.refresh_token }}
            TEST_SDDC_ID: ${{ secrets.test_sddc_id }}
