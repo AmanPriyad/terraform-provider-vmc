@@ -12,7 +12,6 @@ jobs:
            REFRESH_TOKEN: ${{ secrets.refresh_token }}
            TEST_SDDC_ID: ${{ secrets.test_sddc_id }}
         run: |
-          #testcomemnt
           git config --global url."git@github.com:".insteadOf "https://github.com/"
           sudo cp -r * $GOPATH/src/github.com/vmware/terraform-provider-vmc
           cd $GOPATH/src/github.com/vmware/terraform-provider-vmc
