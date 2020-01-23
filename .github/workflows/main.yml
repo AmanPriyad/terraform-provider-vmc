@@ -7,16 +7,16 @@ jobs:
       - uses: actions/checkout@v2
       - name: Running acceptance test
         env: 
-           GOPATH: /home/go
+           #PATH: /usr/local/go/bin:$PATH
+           #GOPATH: /home/go
            ORG_ID: ${{ secrets.ord_id }}
            REFRESH_TOKEN: ${{ secrets.refresh_token }}
            TEST_SDDC_ID: ${{ secrets.test_sddc_id }}
         run: |
-          whoami
           git config --global url."git@github.com:".insteadOf "https://github.com/"
           cp -r * $GOPATH/src/github.com/vmware/terraform-provider-vmc
           cd $GOPATH/src/github.com/vmware/terraform-provider-vmc
           go get
           go build -o terraform-provider-vmc          
           terraform init
-          make testacc 
+          make testacc
