@@ -17,6 +17,7 @@ jobs:
           cp -r * $GOPATH/src/github.com/vmware/terraform-provider-vmc
           cd $GOPATH/src/github.com/vmware/terraform-provider-vmc
           #terraform-provider-linter#
+          export PATH=/home/go/bin:$PATH
           go get github.com/bflad/tfproviderlint/cmd/tfproviderlint
           tfproviderlint ./...
           #Run test#
