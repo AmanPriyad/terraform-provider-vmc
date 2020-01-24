@@ -27,7 +27,7 @@ func TestAccDataSourceVmcConnectedAccounts_basic(t *testing.T) {
 
 func testAccDataSourceVmcConnectedAccountsConfig() string {
 	return fmt.Sprintf(`
-provider "vmc" {
+"vmc" {
 	refresh_token = %q
 }
 	
