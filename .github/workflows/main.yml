@@ -8,8 +8,6 @@ jobs:
       #- uses: bflad/tfproviderlint-github-action@master
       - name: Running acceptance test
         env:
-           GOBIN: /home/go/bin
-           PATH: $GOBIN:$PATH
            ORG_ID: ${{ secrets.ord_id }}
            REFRESH_TOKEN: ${{ secrets.refresh_token }}
            TEST_SDDC_ID: ${{ secrets.test_sddc_id }}
