@@ -7,15 +7,14 @@ jobs:
       - uses: actions/checkout@v2
       #- uses: bflad/tfproviderlint-github-action@master
       - name: Running acceptance test
-        env: 
-           #PATH: /usr/local/go/bin:$PATH
-           #GOPATH: /home/go
+        env:
+           GOBIN: $GOPATH/bin
+           PATH: $GOBIN:$PATH
            ORG_ID: ${{ secrets.ord_id }}
            REFRESH_TOKEN: ${{ secrets.refresh_token }}
            TEST_SDDC_ID: ${{ secrets.test_sddc_id }}
         run: |
           echo $PATH
-          ls /home/go/bin
           git config --global url."git@github.com:".insteadOf "https://github.com/"
           rm -rf $GOPATH/src/github.com/vmware/terraform-provider-vmc/*
           cp -r * $GOPATH/src/github.com/vmware/terraform-provider-vmc
