@@ -28,7 +28,7 @@ func TestAccDataSourceVmcOrg_basic(t *testing.T) {
 
 func testAccDataSourceVmcOrgConfig() string {
 	return fmt.Sprintf(`
-"vmc" {
+provider "vmc" {
 	refresh_token = %q
 }
 	

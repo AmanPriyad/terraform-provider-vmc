@@ -31,7 +31,7 @@ func TestAccDataSourceVmcCustomerSubnets_basic(t *testing.T) {
 
 func testAccDataSourceVmcCustomerSubnetsConfig() string {
 	return fmt.Sprintf(`
-"vmc" {
+provider "vmc" {
 	refresh_token = %q
 }
 	
